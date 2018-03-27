@@ -464,8 +464,8 @@ The ideal production build process will do the following steps which are defined
 
 Features and challenges to be added:
 1. Author administration: adding support for administration of the authors. Logic to make sure you can delete a author.
-[IN PROGRESS]2. Delete course
-3. Hide empty course list (once all the courses are deleted)
+2. [X] Delete course
+3. [X] Hide empty course list (once all the courses are deleted)
 4. Unsaved changes message: message user if trying to leave the form course with unsaved changes
 5. Client-side validation: validate category
 6. Handle 404's: in manage course page. Logic to mapStateToProps.
