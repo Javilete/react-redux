@@ -52,7 +52,8 @@ describe('Async Actions', () => {
   });
 
   it('should create BEGIN_AJAX_CALL and LOAD_COURSES_SUCCESS when loading courses', (done) => {
-    //An example call to nock and how to replay when it is captured
+    //An example call to nock and how to replay when it is captured, not needed as in our app we
+    // do not use reall API calls
     // nock('http://example')
     //   .get('/courses')
     //   .reply(200, { body: {course: [{ id: 1, firstName: 'Cory', lastName: 'House'}] }});

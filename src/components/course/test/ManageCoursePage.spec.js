@@ -3,7 +3,7 @@ import expect from 'expect';
 import { mount, shallow } from 'enzyme';
 import { ManageCoursePage } from '../ManageCoursePage';// {} to get the raw component
 
-describe('Mnage course page', () => {
+describe('Manage course page', () => {
   it('sets error message when trying to save empty title', () => {
     const props = {
       authors: [],
