@@ -505,9 +505,9 @@ Once all the steps are done, we can open the production build in browser to see 
 Features and challenges to be added:
 - [ ] Author administration: adding support for administration of the authors. Logic to make sure you can delete a author.
 - [X] Delete course
--  [X] Hide empty course list (once all the courses are deleted)
+- [X] Hide empty course list (once all the courses are deleted)
 - [ ] Unsaved changes message: message user if trying to leave the form course with unsaved changes
-- [ ] Client-side validation: validate category
+- [X] Client-side validation: validate category
 - [ ] Handle 404's: in manage course page. Logic to mapStateToProps.
 - [ ] Show # courses in Header
 - [ ] Pagination to support large data sets

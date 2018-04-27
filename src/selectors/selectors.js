@@ -6,4 +6,4 @@ export function authorsFormattedforDropdown(authors) {
       text: author.firstName + ' ' + author.lastName
     };
   });
-}
+};

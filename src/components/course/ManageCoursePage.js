@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import { authorsFormattedforDropdown } from '../../selectors/selectors';
+import { validate } from '../../validators/validators';
 import toastr from 'toastr';
 
 export class ManageCoursePage extends React.Component {
@@ -38,16 +39,13 @@ export class ManageCoursePage extends React.Component {
   }
 
   courseFormIsValid() {
-    let formIsValid = true;
-    let errors = {};
-
-    if(this.state.course.title.length < 5) {
-      errors.title = 'Title must be at least 5 characters';
-      formIsValid = false;
+    let errors = validate(this.state.course);
+    if(Object.keys(errors).length != 0) {
+      this.setState({errors: errors});
+      return false;
     }
 
-    this.setState({errors: errors});
-    return formIsValid;
+    return true;
   }
 
   saveCourse(event) {
