@@ -1,10 +1,13 @@
 import * as types from './actionTypes';
-import courseApi from '../api/mockCourseApi';
 import authorApi from '../api/mockAuthorApi';
 import { beginAjaxCall } from './ajaxStatusActions';
 
 export function loadAuthorsSuccess(authors) {
   return {type: types.LOAD_AUTHORS_SUCCESS, authors};
+}
+
+export function deleteAuthorSuccess(author) {
+  return {type: types.DELETE_AUTHOR_SUCCESS, author}
 }
 
 export function loadAuthors() {
@@ -16,5 +19,17 @@ export function loadAuthors() {
       }).catch(error => {
           throw(error);
       });
+  };
+}
+
+export function deleteAuthor(author) {
+  return dispatch => {
+    // body of thunk
+    dispatch(beginAjaxCall());
+    return authorApi.deleteAuthor(author.id).then( author => {
+      dispatch(deleteAuthorSuccess(author));
+    }).catch(error => {
+      throw(error);
+    });
   };
 }

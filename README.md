@@ -484,6 +484,31 @@ To be able to test thunks, it is required to mock a couple of things as they are
 When testing the redux store, we can consider it as a kind of integration test. We just make sure that the
 actions and reducers are working together with the store as expected.
 
+### Connected components testing
+It might be the case that when testing components that are connected to the redux store we just want to do 
+the testing of the actual component itself and not the one connected to it.
+Normally, when importing the component to your spec for unit testing, you would do it with the following statement:
+```
+import AuthorListRow from '../AuthorListRow';
+```
+In this case, you hold the wrapper component returned by connect as it is the export default in your component.
+To be able to test it in this way, you need to create a mock store and use one of the following options:
+```
+<Provider store={mockStore}>
+  <AuthorListRow {...props} />
+</Provider>
+```
+or the other option is 
+```
+<AuthorListRow store={mockStore} {...props} />
+```
+
+If the aim is just to test the component itself without any interaction with the redux store, 
+you can do that using the following statement with the curly braces:
+```
+import { AuthorListRow}  from '../AuthorListRow';
+```
+
 ## PRODUCTION BUILDS
 Everything is served by webpack which bundles everything. The content in the src and dist folders are the following:
 - /src -> source code in different folders.
@@ -513,3 +538,5 @@ Features and challenges to be added:
 - [ ] Pagination to support large data sets
 - [ ] Sort course table by title (mapStateToProps where to get it done)
 - [ ] Revert abandoned changes
+
+
