@@ -1,7 +1,6 @@
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, {PropTypes} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import * as authorActions from "../../actions/authorActions";
 import toastr from "toastr";
 
@@ -17,7 +16,7 @@ export class AuthorListRow extends React.Component {
     event.preventDefault();
     console.log(this.props);
     this.props.actions.deleteAuthor(this.props.author)
-      .then(() => this.redirect(),(error) => this.handleError(error));
+      .then(() => this.redirect(), (error) => this.handleError(error));
   }
 
   redirect() {

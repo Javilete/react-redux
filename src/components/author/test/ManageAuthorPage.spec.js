@@ -1,12 +1,16 @@
 import React from 'react';
 import expect from 'expect';
-import { mount, shallow } from 'enzyme';
-import { ManageAuthorPage } from '../ManageAuthorPage';// {} to get the raw component
+import {mount} from 'enzyme';
+import {ManageAuthorPage} from '../ManageAuthorPage'; // {} to get the raw component
 
 describe('Manage Author page', () => {
   it('sets error message when trying to save empty surname', () => {
     const props = {
-      actions: { saveAuthor: () => { return Promise.resolve(); }},
+      actions: {
+        saveAuthor: () => {
+          return Promise.resolve();
+        }
+      },
       author: {id: '', firstname: '', surname: ''}
     };
 
@@ -16,4 +20,6 @@ describe('Manage Author page', () => {
     saveButton.simulate('click');
     expect(wrapper.state().errors.surname).toBe('Surname must be at least 5 characters');
   });
+
+
 });

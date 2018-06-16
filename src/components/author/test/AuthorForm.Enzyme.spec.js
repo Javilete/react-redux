@@ -9,6 +9,10 @@ import AuthorForm from '../AuthorForm';
 //Function to return the output of rendering the component we are testing
 function setUp(saving) {
   let props = {
+    author: {
+      firstname: "Pepe",
+      surname: "Grillo"
+    },
     saving: saving,
     errors: {},
     onSave: () => {},
