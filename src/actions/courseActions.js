@@ -19,7 +19,6 @@ export function deleteCourseSuccess(course) {
   return {type: types.DELETE_COURSE_SUCCESS, course};
 }
 
-
 //thunk dispatching loadCoursesSuccess
 export function loadCourses() {
   return dispatch => {
@@ -35,7 +34,7 @@ export function loadCourses() {
 
 //thunk dispatching updateCourseSuccess
 export function saveCourse(course) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(beginAjaxCall());
     return courseApi.saveCourse(course).then(savedCourse => {
       course.id ? dispatch(updateCourseSuccess(savedCourse)) :
@@ -50,12 +49,10 @@ export function saveCourse(course) {
 //thunk dispatching deleteCourseSuccess
 export function deleteCourse(course) {
   return (dispatch) => {
-    console.log("Delete course: " + course.id);
     dispatch(beginAjaxCall());
     return courseApi.deleteCourse(course.id).then(deletedCourse => {
       dispatch(deleteCourseSuccess(course));
     }).catch(error => {
-      console.log(error);
       dispatch(ajaxCallFailed(error));
       throw(error);
     });

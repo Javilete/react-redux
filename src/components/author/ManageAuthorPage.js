@@ -3,9 +3,8 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as authorActions from "../../actions/authorActions";
 import toastr from "toastr";
-import {validate} from "../../validators/validators";
-import {AuthorForm} from "./AuthorForm";
-import {ManageCoursePage} from "../course/ManageCoursePage";
+import { Validators } from "../../validators/validators";
+import AuthorForm from "./AuthorForm";
 
 export class ManageAuthorPage extends React.Component {
 
@@ -17,6 +16,8 @@ export class ManageAuthorPage extends React.Component {
       errors: {},
       saving: false
     };
+
+    this.validators = new Validators(3);
 
     this.updateAuthor = this.updateAuthor.bind(this);
     this.saveAuthor = this.saveAuthor.bind(this);
@@ -30,7 +31,7 @@ export class ManageAuthorPage extends React.Component {
   }
 
   authorFormIsValid() {
-    let errors = validate(this.state.author);
+    let errors = this.validators.validateAuthor(this.state.author);
     if (Object.keys(errors).length != 0) {
       this.setState({errors: errors});
       return false;
@@ -71,7 +72,7 @@ export class ManageAuthorPage extends React.Component {
         errors={this.state.errors}
         saving={this.state.saving}
       />
-    )
+    );
   }
 }
 
@@ -81,7 +82,7 @@ ManageAuthorPage.propTypes = {
 };
 
 //Pull in the react router context so we can use router and it is available as this.context.router.
-ManageCoursePage.contextTypes = {
+ManageAuthorPage.contextTypes = {
   router: PropTypes.object
 };
 
@@ -95,7 +96,7 @@ function mapStateToProps(state, ownProps) {
   const authorId = ownProps.params.id; //from the path `author/:id`
 
   //Empty author for initialization (core structure)
-  let author = {id: '', firstname: '', surname: ''};
+  let author = {id: '', firstName: '', lastName: ''};
 
   if (authorId && state.authors.length > 0) {
     author = getAuthorBy(state.authors, authorId);

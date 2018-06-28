@@ -1,16 +1,33 @@
 import { getMessageBy } from './errorMessages';
 
-export function validate(course) {
-  let errors = {};
+export class Validators {
 
-  validateField(course.title, 'title', errors);
-  validateField(course.category, 'category', errors);
+  constructor(limit) {
+    this.limit = limit;
+  }
 
-  return errors;
-}
+  validateCourse(course) {
+    let errors = {};
 
-function validateField(value, field, errors) {
-  if(value.length < 5) {
-    errors[field] = getMessageBy(field);
+    this.validateField(course.title, 'title', errors);
+    this.validateField(course.category, 'category', errors);
+
+    return errors;
+  }
+
+  validateAuthor(author) {
+    let errors = {};
+
+    this.validateField(author.firstName, 'firstName', errors);
+    this.validateField(author.lastName, 'lastName', errors);
+
+    return errors;
+  }
+
+
+  validateField(value, field, errors) {
+    if (value.length < this.limit) {
+      errors[field] = getMessageBy(field);
+    }
   }
 }

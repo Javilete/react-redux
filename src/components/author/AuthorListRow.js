@@ -14,7 +14,6 @@ export class AuthorListRow extends React.Component {
 
   deleteAuthor(event) {
     event.preventDefault();
-    console.log(this.props);
     this.props.actions.deleteAuthor(this.props.author)
       .then(() => this.redirect(), (error) => this.handleError(error));
   }
@@ -33,7 +32,7 @@ export class AuthorListRow extends React.Component {
     return (
       <tr>
         <td><a href="javascript:;" onClick={this.deleteAuthor}>Delete</a></td>
-        <td>{author.firstname} {author.surname}</td>
+        <td>{author.firstName} {author.lastName}</td>
       </tr>
     );
   }
@@ -44,7 +43,6 @@ AuthorListRow.propTypes = {
 };
 
 function mapDispatchToProps(dispatch) {
-  console.log('Dispatch to props');
   return {
     actions: bindActionCreators(authorActions, dispatch)
   };

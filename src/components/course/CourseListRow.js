@@ -15,7 +15,6 @@ export class CourseListRow extends React.Component {
 
   deleteCourse(event) {
     event.preventDefault();
-    console.log(this.props);
     this.props.actions.deleteCourse(this.props.course)
       .then(() => this.redirect(),(error) => this.handleError(error));
   }
@@ -48,7 +47,6 @@ CourseListRow.propTypes = {
 };
 
 function mapDispatchToProps(dispatch) {
-  console.log('Dispatch to props');
   return {
     actions: bindActionCreators(courseActions, dispatch)
   };

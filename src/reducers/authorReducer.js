@@ -7,8 +7,15 @@ export default function authorReducer(state = initialState.authors, action) {
     return action.authors;
   }
 
+  function createAuthorAction() {
+    return [...state,
+      Object.assign({}, action.author)
+    ];
+  }
+
   let actions = new Map();
   actions.set(types.LOAD_AUTHORS_SUCCESS, loadAuthorsActions);
+  actions.set(types.CREATE_AUTHOR_SUCCESS, createAuthorAction);
 
   let act = actions.get(action.type);
   return act ? act() : state;

@@ -7,18 +7,18 @@ const AuthorForm = ({author, onSave, onChange, saving, errors}) => {
       <h1>Add an author</h1>
 
       <TextInput
-        name="firstname"
+        name="firstName"
         label="First Name"
-        value={author.firstname}
+        value={author.firstName}
         onChange={onChange}
-        error={errors.firstname} />
+        error={errors.firstName} />
 
       <TextInput
-        name="surname"
-        label="Surname"
-        value={author.surname}
+        name="lastName"
+        label="lastName"
+        value={author.lastName}
         onChange={onChange}
-        error={errors.surname} />
+        error={errors.lastName} />
 
       <input
         type="submit"
@@ -32,11 +32,11 @@ const AuthorForm = ({author, onSave, onChange, saving, errors}) => {
 };
 
 AuthorForm.propTypes = {
-  author: React.PropTypes.object.isRequired,
-  onSave: React.PropTypes.func.isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  saving: React.PropTypes.bool,
-  errors: React.PropTypes.object
+  author: PropTypes.object.isRequired,
+  onSave: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  saving: PropTypes.bool,
+  errors: PropTypes.object
 
 };
 

@@ -10,8 +10,8 @@ import AuthorForm from '../AuthorForm';
 function setUp(saving) {
   let props = {
     author: {
-      firstname: "Pepe",
-      surname: "Grillo"
+      firstName: "Pepe",
+      lastName: "Grillo"
     },
     saving: saving,
     errors: {},

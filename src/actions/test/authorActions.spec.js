@@ -18,6 +18,19 @@ describe('Author actions', () => {
 
     expect(action).toEqual(expectedAction);
   });
+
+  describe('saveAuthorSuccess', () => {
+    const author = {id: 'pepito-grillo', firstName: 'pepito', lastName: 'grillo'};
+    const expectedAction = {
+      type: types.CREATE_AUTHOR_SUCCESS,
+      author: author
+    };
+
+    const action = authorActions.createAuthorSuccess(author);
+
+    expect(action).toEqual(expectedAction);
+
+  });
 });
 
 const middleware = [thunk];

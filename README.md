@@ -528,7 +528,7 @@ The ideal production build process will do the following steps which are defined
 Once all the steps are done, we can open the production build in browser to see the result and compare against the dev where we see that the size of the files are quite different.
 
 Features and challenges to be added:
-- [ ] Author administration: adding support for administration of the authors. Logic to make sure you can delete a author.
+- [X] Author administration: adding support for administration of the authors. Logic to make sure you can delete a author.
 - [X] Delete course
 - [X] Hide empty course list (once all the courses are deleted)
 - [ ] Unsaved changes message: message user if trying to leave the form course with unsaved changes

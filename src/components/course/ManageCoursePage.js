@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import { authorsFormattedforDropdown } from '../../selectors/selectors';
-import { validate } from '../../validators/validators';
+import { Validators } from '../../validators/validators';
 import toastr from 'toastr';
 
 export class ManageCoursePage extends React.Component {
@@ -17,6 +17,8 @@ export class ManageCoursePage extends React.Component {
       saving: false
     };
 
+    this.validators = new Validators(5);
+
     this.updateCourseState = this.updateCourseState.bind(this);
     this.saveCourse = this.saveCourse.bind(this);
   }
@@ -26,7 +28,8 @@ export class ManageCoursePage extends React.Component {
   //It is called anytime that props has changed or maybe if react thinks props has changed
   componentWillReceiveProps(nextProps) {
     if (this.props.course.id != nextProps.course.id) {
-      // Necessary to populate form when existing course is loaded directly
+      // Necessary to
+      // populate form when existing course is loaded directly
       this.setState({course: Object.assign({}, nextProps.course)});
     }
   }
@@ -39,7 +42,7 @@ export class ManageCoursePage extends React.Component {
   }
 
   courseFormIsValid() {
-    let errors = validate(this.state.course);
+    let errors = this.validators.validateCourse(this.state.course);
     if(Object.keys(errors).length != 0) {
       this.setState({errors: errors});
       return false;

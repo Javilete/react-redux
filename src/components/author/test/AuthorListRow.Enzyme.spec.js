@@ -9,7 +9,7 @@ describe('Author list row', () => {
   describe('when an author is passed', () => {
     it('should be displayed', () => {
       const props = {
-        author: {id: 'pepito-grillo', firstname: 'Pepito', surname: 'Grillo'}
+        author: {id: 'pepito-grillo', firstName: 'Pepito', lastName: 'Grillo'}
       };
 
       const wrapper = shallow(<AuthorListRow {...props} />); // Use mount so the full DOM is created in memory (with deep components)
