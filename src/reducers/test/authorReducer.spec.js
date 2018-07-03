@@ -16,4 +16,18 @@ describe('Author Reducer', () =>  {
     expect(newState[0].firstName).toEqual('Pepe');
     expect(newState[1].firstName).toEqual('Juan');
   });
+
+  it('should remove an author when passed DELETE_AUTHOR_SUCCESS', () => {
+    const initialState = [
+      {id: 'pepe-grillo', firstName: 'Pepe', lastName: 'Grillo'},
+      {id: 'juanito-perez', firstName: 'Juanito', lastName: 'Perez'}
+    ];
+    const author =  {id: 'juanito-perez', firstName: 'Juanito', lastName: 'Perez'};
+    const action = actions.deleteAuthorSuccess(author);
+
+    const newState = authorReducer(initialState, action);
+
+    expect(newState.length).toEqual(1);
+    expect(newState[0].firstName).toEqual('Pepe');
+  });
 });

@@ -7,6 +7,7 @@ export function loadAuthorsSuccess(authors) {
 }
 
 export function deleteAuthorSuccess(author) {
+  console.log("Author to delete: " + JSON.stringify(author));
   return {type: types.DELETE_AUTHOR_SUCCESS, author};
 }
 
@@ -30,7 +31,7 @@ export function deleteAuthor(author) {
   return dispatch => {
     // body of thunk
     dispatch(beginAjaxCall());
-    return authorApi.deleteAuthor(author.id).then( author => {
+    return authorApi.deleteAuthor(author.id).then( deletedAuthor => {
       dispatch(deleteAuthorSuccess(author));
     }).catch(error => {
       throw(error);

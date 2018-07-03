@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as authorActions from '../../actions/authorActions';
 import AuthorList from './AuthorList';
+import {CoursesPage} from "../course/CoursesPage";
 
 export class AuthorsPage extends React.Component {
   constructor(props, context) {
@@ -30,6 +31,11 @@ export class AuthorsPage extends React.Component {
     );
   }
 }
+
+AuthorsPage.propTypes = {
+  authors: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
+};
 
 function mapStateToProps(state, ownProps) {
   return {

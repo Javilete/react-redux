@@ -78,7 +78,7 @@ export class ManageAuthorPage extends React.Component {
 
 ManageAuthorPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  author: PropTypes.array.isRequired
+  author: PropTypes.object.isRequired
 };
 
 //Pull in the react router context so we can use router and it is available as this.context.router.
